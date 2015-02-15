@@ -20,7 +20,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     var searchTerm = ""
     var currentFilters = Dictionary<Int, String>()
 
-    var businesses: [NSDictionary]!
+    var businesses: [Business]!
     
     lazy var searchBar = UISearchBar(frame: CGRectMake(0, 0, 200, 20))
     @IBOutlet weak var tableView: UITableView!
@@ -87,7 +87,11 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         // perform search
         yelpClient.search(self.searchTerm, dealsFilter: df, radiusFilterInMiles : rf, sortFilter : sf , categoryFilter: cf,
             success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                self.businesses = response["businesses"] as [NSDictionary]?
+                var results: [NSDictionary] = (response["businesses"] as [NSDictionary]?) ?? []
+                self.businesses = []
+                for result in results {
+                    self.businesses.append(Business(fromJSON: result as NSDictionary))
+                }
                 self.tableView.reloadData()
                 self.networkErrorLabel.hidden = true
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
@@ -122,18 +126,17 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
         let business = self.businesses![indexPath.row]
 
-        if let imageUrl = business["image_url"] as? String {
+        if let imageUrl = business.businessImageUrl {
             cell.businessImage.setImageWithURL(NSURL(string: imageUrl))
         }
-        var name = (business["name"]! as String)
+        var name = business.name
         cell.businessName.text = "\(indexPath.row + 1). \(name)"
-        cell.ratingImage.setImageWithURL(NSURL(string: business["rating_img_url"]! as String))
-        var count  = business["review_count"] as Int
+        cell.ratingImage.setImageWithURL(NSURL(string: business.ratingImageUrl))
+        var count  = business.reviewCount
         cell.reviewCount.text = "\(count) Reviews"
-//        var address = (business["location"] as Dictionary)["display_address"]! as [String]
-//        cell.address.text = address[0] + ", " + address[1]
-        var categories = business["categories"] as [[String]]
-        cell.categories.text = categories[0][0]
+        cell.address.text = business.getAddressForDisplay()
+        cell.categories.text = business.getCategoriesForDisplay()
+        cell.distance.text = business.getDistanceInMilesForDisplay()
         
         return cell
     }

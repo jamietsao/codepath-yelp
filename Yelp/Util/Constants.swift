@@ -30,4 +30,7 @@ struct Constants {
         static let NavBarDVD = "New Releases"
     }
     
+    struct Math {
+        static let MetersPerMile = 1609.34
+    }
 }

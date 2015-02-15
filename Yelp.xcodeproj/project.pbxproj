@@ -17,6 +17,7 @@
 		7DBD4AA81A901E4800620CD2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4AA71A901E4800620CD2 /* Constants.swift */; };
 		7DBD4AAE1A9074EC00620CD2 /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4AAC1A9074EC00620CD2 /* BusinessCell.swift */; };
 		7DBD4AAF1A9074EC00620CD2 /* BusinessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DBD4AAD1A9074EC00620CD2 /* BusinessCell.xib */; };
+		7DBD4AB11A910BED00620CD2 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4AB01A910BED00620CD2 /* Business.swift */; };
 		7DE6E7AB1A8C940C00623B52 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE6E7AA1A8C940C00623B52 /* FiltersViewController.swift */; };
 		7DE6E7B71A8DD84800623B52 /* LabelFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE6E7B51A8DD84800623B52 /* LabelFilterCell.swift */; };
 		7DE6E7B81A8DD84800623B52 /* LabelFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DE6E7B61A8DD84800623B52 /* LabelFilterCell.xib */; };
@@ -52,6 +53,7 @@
 		7DBD4AA71A901E4800620CD2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Util/Constants.swift; sourceTree = "<group>"; };
 		7DBD4AAC1A9074EC00620CD2 /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusinessCell.swift; path = Views/BusinessCell.swift; sourceTree = "<group>"; };
 		7DBD4AAD1A9074EC00620CD2 /* BusinessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusinessCell.xib; path = Views/BusinessCell.xib; sourceTree = "<group>"; };
+		7DBD4AB01A910BED00620CD2 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		7DE6E7AA1A8C940C00623B52 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		7DE6E7B51A8DD84800623B52 /* LabelFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelFilterCell.swift; sourceTree = "<group>"; };
 		7DE6E7B61A8DD84800623B52 /* LabelFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelFilterCell.xib; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		7DBD4AA91A90679800620CD2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7DBD4AB01A910BED00620CD2 /* Business.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				7DAD35561A8B2964008B3142 /* AppDelegate.swift in Sources */,
 				7D796FB61A8B2E5B005E1FE1 /* BusinessesViewController.swift in Sources */,
 				7DE6E7AB1A8C940C00623B52 /* FiltersViewController.swift in Sources */,
+				7DBD4AB11A910BED00620CD2 /* Business.swift in Sources */,
 				7DE6E7B71A8DD84800623B52 /* LabelFilterCell.swift in Sources */,
 				7DBD4AA81A901E4800620CD2 /* Constants.swift in Sources */,
 			);

@@ -12,8 +12,6 @@ import Foundation
 import UIKit
 
 class YelpClient: BDBOAuth1RequestOperationManager {
-
-    let MetersPerMile = 1609.34
     
     let YelpApiUrl = "http://api.yelp.com/v2/"
     
@@ -36,7 +34,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     
     func search(term: String, dealsFilter: String, radiusFilterInMiles: String, sortFilter: String, categoryFilter: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> Void {
 
-        var parameters = [ "location": "San Francisco" ]
+        var parameters = [ "ll": "37.788022,-122.399797" ] // San Francisco
                     
         if !term.isEmpty {
             parameters["term"] = term
@@ -62,7 +60,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     
     private func toMeters(miles m: String) -> String {
         let miles = (m as NSString).doubleValue
-        return String(format:"%f", miles * MetersPerMile)
+        return String(format:"%f", miles * Constants.Math.MetersPerMile)
     }
     
 }
