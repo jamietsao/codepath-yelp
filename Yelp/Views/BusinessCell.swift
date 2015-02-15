@@ -50,7 +50,7 @@ class BusinessCell: UITableViewCell {
         self.ratingImage.setImageWithURL(NSURL(string: self.business.ratingImageUrl))
         var count = self.business.reviewCount
         self.reviewCount.text = "\(count) Reviews"
-        self.address.text = self.business.getAddressForDisplay()
+        self.address.text = self.business.getLocationForDisplay()
         self.categories.text = self.business.getCategoriesForDisplay()
         self.distance.text = self.business.getDistanceInMilesForDisplay()
 

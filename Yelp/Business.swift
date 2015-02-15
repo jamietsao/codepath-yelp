@@ -13,12 +13,14 @@ import Foundation
 */
 class Business {
     
-    let id: String                  // "henrys-hunan-san-francisco-4"
-    let businessImageUrl: String!    // "http://s3-media4.fl.yelpcdn.com/bphoto/5sLIBt7uBaM2i4NL5dhZug/ms.jpg"
-    let name: String                // "Henry's Hunan"
-    let ratingImageUrl: String      // "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png"
-    let reviewCount: Int            // 91
-    let displayAddress: [String]    // [ "1398 Grant Ave", "North Beach/Telegraph Hill", "San Francisco, CA 94133" ]
+    let id: String                  // "subway-san-francisco-14"
+    let businessImageUrl: String!   // "http://s3-media2.fl.yelpcdn.com/bphoto/fliioY0RmhL0TvRr9rC1Jg/ms.jpg"
+    let name: String                // "Subway"
+    let ratingImageUrl: String      // "http://s3-media3.fl.yelpcdn.com/assets/2/www/img/34bc8086841c/ico/stars/v1/stars_3.png"
+    let reviewCount: Int            // 46
+    let address: [String]           // [ "388 Market St", "Ste 102" ]
+    let neighborhoods: [String]     // [ "Financial District", "SoMa" ]
+    let city: String                // "San Francisco"
     let categories: [[String]]      // [ [ "Chinese", "chinese" ] ]
     let distance: Double             // 1451.4974956146543
     
@@ -28,19 +30,34 @@ class Business {
         name = business["name"] as String
         ratingImageUrl = business["rating_img_url"] as String
         reviewCount = business["review_count"] as Int
-        displayAddress = (business["location"] as Dictionary<String, AnyObject>)["display_address"] as Array<String>
-        categories = business["categories"] as Array<Array<String>>
+        var location = business["location"] as Dictionary<String, AnyObject>
+        address = location["address"] as Array<String>
+        neighborhoods = location["neighborhoods"] as Array<String>
+        city = location["city"] as String
+        categories = []
+        if let arr = business["categories"] as? Array<Array<String>> {
+            categories = arr
+        }
         distance = business["distance"] as Double
     }
     
-    func getAddressForDisplay() -> String {
-        switch self.displayAddress.count {
+    func getLocationForDisplay() -> String {
+        var display: [String] = []
+        if self.address.count > 0 {
+            display.append(self.address[0])
+        }
+        if self.neighborhoods.count > 0 {
+            display.append(self.neighborhoods[0])
+        }
+        display.append(self.city)
+        
+        switch display.count {
         case 0:
             return ""
         case 1:
-            return self.displayAddress[0]
+            return display[0]
         default:
-            return self.displayAddress[0] + ", " + self.displayAddress[1]
+            return display[0] + ", " + display[1]
         }
     }
     
@@ -49,7 +66,7 @@ class Business {
         for category in self.categories {
             display += category[0] + ", "
         }
-        return display.substringToIndex(display.endIndex.predecessor().predecessor())
+        return display.utf16Count > 1 ? display.substringToIndex(display.endIndex.predecessor().predecessor()) : ""
     }
     
     func getDistanceInMilesForDisplay() -> String {
