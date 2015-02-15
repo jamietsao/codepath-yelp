@@ -120,24 +120,14 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             return 0
         }
     }
+
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as BusinessCell
-        
-        let business = self.businesses![indexPath.row]
-
-        if let imageUrl = business.businessImageUrl {
-            cell.businessImage.setImageWithURL(NSURL(string: imageUrl))
-        }
-        var name = business.name
-        cell.businessName.text = "\(indexPath.row + 1). \(name)"
-        cell.ratingImage.setImageWithURL(NSURL(string: business.ratingImageUrl))
-        var count  = business.reviewCount
-        cell.reviewCount.text = "\(count) Reviews"
-        cell.address.text = business.getAddressForDisplay()
-        cell.categories.text = business.getCategoriesForDisplay()
-        cell.distance.text = business.getDistanceInMilesForDisplay()
-        
+        cell.setBusiness(self.businesses![indexPath.row], indexRow: indexPath.row)
         return cell
     }
     

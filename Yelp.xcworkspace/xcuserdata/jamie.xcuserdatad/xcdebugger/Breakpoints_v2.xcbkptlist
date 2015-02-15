@@ -10,22 +10,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yelp/BusinessesViewController.swift"
-            timestampString = "445713193.676586"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Yelp/BusinessesViewController.swift"
             timestampString = "445717256.183968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -329,6 +313,108 @@
                   startingLineNumber = "90"
                   endingLineNumber = "90"
                   offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Yelp/Views/BusinessCell.swift"
+            timestampString = "445721485.158004"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "BusinessCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Yelp.BusinessCell.(business in _29DB5015F412500968DC535015E497D7).setter : Swift.ImplicitlyUnwrappedOptional&lt;Yelp.Business&gt;"
+                  moduleName = "Yelp"
+                  urlString = "file:///Users/jamie/workspace/codepath/Yelp/Yelp/Views/BusinessCell.swift"
+                  timestampString = "445722001.137892"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Yelp.BusinessCell.(business in _29DB5015F412500968DC535015E497D7).materializeForSet : Swift.ImplicitlyUnwrappedOptional&lt;Yelp.Business&gt;"
+                  moduleName = "Yelp"
+                  urlString = "file:///Users/jamie/workspace/codepath/Yelp/Yelp/Views/BusinessCell.swift"
+                  timestampString = "445722001.138168"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Yelp.BusinessCell.init (Yelp.BusinessCell.Type)(style : C.UITableViewCellStyle, reuseIdentifier : Swift.Optional&lt;Swift.String&gt;) -&gt; Yelp.BusinessCell"
+                  moduleName = "Yelp"
+                  urlString = "file:///Users/jamie/workspace/codepath/Yelp/Yelp/Views/BusinessCell.swift"
+                  timestampString = "445722001.1383"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Yelp.BusinessCell.init (Yelp.BusinessCell.Type)(frame : C.CGRect) -&gt; Yelp.BusinessCell"
+                  moduleName = "Yelp"
+                  urlString = "file:///Users/jamie/workspace/codepath/Yelp/Yelp/Views/BusinessCell.swift"
+                  timestampString = "445722001.138426"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "47">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Yelp.BusinessCell.init (Yelp.BusinessCell.Type)() -&gt; Yelp.BusinessCell"
+                  moduleName = "Yelp"
+                  urlString = "file:///Users/jamie/workspace/codepath/Yelp/Yelp/Views/BusinessCell.swift"
+                  timestampString = "445722001.138546"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Yelp.BusinessCell.init (Yelp.BusinessCell.Type)(coder : ObjectiveC.NSCoder) -&gt; Yelp.BusinessCell"
+                  moduleName = "Yelp"
+                  urlString = "file:///Users/jamie/workspace/codepath/Yelp/Yelp/Views/BusinessCell.swift"
+                  timestampString = "445722001.138672"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "31">
                </Location>
             </Locations>
          </BreakpointContent>
