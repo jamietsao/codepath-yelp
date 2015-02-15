@@ -15,22 +15,33 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M2n-dg-mhC">
-                        <rect key="frame" x="263" y="7" width="51" height="31"/>
+                        <rect key="frame" x="263" y="6" width="51" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="zvR-1W-nZP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="zvR-1W-nZP"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <action selector="onSwitchChange:" destination="KGk-i7-Jjw" eventType="valueChanged" id="AAX-R0-99e"/>
+                        </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub5-br-DMw">
-                        <rect key="frame" x="8" y="12" width="43" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="8" y="11" width="36" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="M2n-dg-mhC" secondAttribute="bottom" constant="-2.5" id="8BG-ds-ARO"/>
-                    <constraint firstItem="M2n-dg-mhC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="9ac-uh-zhJ"/>
-                    <constraint firstItem="M2n-dg-mhC" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Ifw-GO-85W"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Ub5-br-DMw" secondAttribute="bottom" constant="2.5" id="P9Q-ar-tb3"/>
-                    <constraint firstItem="Ub5-br-DMw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="qKk-d5-fy5"/>
-                    <constraint firstItem="Ub5-br-DMw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="wqX-fB-4qm"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ub5-br-DMw" secondAttribute="bottom" constant="4" id="BvA-3y-sVc"/>
+                    <constraint firstItem="M2n-dg-mhC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-2" id="Ddp-A1-Wk2"/>
+                    <constraint firstItem="M2n-dg-mhC" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Xc6-JU-jDg"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="M2n-dg-mhC" secondAttribute="bottom" constant="-1" id="ZTF-t2-E5j"/>
+                    <constraint firstItem="Ub5-br-DMw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="chc-dy-QIz"/>
+                    <constraint firstItem="Ub5-br-DMw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="huW-pO-wnL"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

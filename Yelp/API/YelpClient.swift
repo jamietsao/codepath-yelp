@@ -12,11 +12,14 @@ import Foundation
 import UIKit
 
 class YelpClient: BDBOAuth1RequestOperationManager {
+
+    let MetersPerMile = 1609.34
+    
+    let YelpApiUrl = "http://api.yelp.com/v2/"
     
     var accessToken: String!
     var accessSecret: String!
 
-    // TODO: what's this for?
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -24,17 +27,42 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     init(consumerKey key: String!, consumerSecret secret: String!, accessToken: String!, accessSecret: String!) {
         self.accessToken = accessToken
         self.accessSecret = accessSecret
-        var baseUrl = NSURL(string: "http://api.yelp.com/v2/")
+        var baseUrl = NSURL(string: YelpApiUrl)
         super.init(baseURL: baseUrl, consumerKey: key, consumerSecret: secret);
         
         var token = BDBOAuth1Credential(token: accessToken, secret: accessSecret, expiration: nil)
         self.requestSerializer.saveAccessToken(token)
     }
     
-    func searchWithTerm(term: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
-        // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
-        var parameters = ["term": term, "location": "San Francisco"]
-        return self.GET("search", parameters: parameters, success: success, failure: failure)
+    func search(term: String, dealsFilter: String, radiusFilterInMiles: String, sortFilter: String, categoryFilter: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> Void {
+
+        var parameters = [ "location": "San Francisco" ]
+                    
+        if !term.isEmpty {
+            parameters["term"] = term
+        }
+        if !dealsFilter.isEmpty {
+            parameters["deals_filter"] = dealsFilter
+        }
+        if !radiusFilterInMiles.isEmpty {
+            parameters["radius_filter"] = toMeters(miles: radiusFilterInMiles)
+        }
+        if !sortFilter.isEmpty {
+            parameters["sort"] = sortFilter
+        }
+        if !categoryFilter.isEmpty {
+            parameters["category_filter"] = categoryFilter
+        }
+
+        NSLog("Yelp params: \(parameters)")
+        
+        // invoke API call with handlers
+        self.GET("search", parameters: parameters, success: success, failure: failure)
+    }
+    
+    private func toMeters(miles m: String) -> String {
+        let miles = (m as NSString).doubleValue
+        return String(format:"%f", miles * MetersPerMile)
     }
     
 }

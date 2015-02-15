@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol DealsFilterDelegate: class {
+    func handleFilterChange(switchValue: Bool)
+}
+
 class DealsFilterCell: UITableViewCell {
 
+    weak var delegate: DealsFilterDelegate?
+    
     @IBOutlet weak var dealsSwitch: UISwitch!
     
     override func awakeFromNib() {
@@ -19,8 +25,12 @@ class DealsFilterCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-    
+
+    @IBAction func onSwitchChange(sender: AnyObject) {
+        self.delegate?.handleFilterChange(dealsSwitch.on)
+    }
+
 }
