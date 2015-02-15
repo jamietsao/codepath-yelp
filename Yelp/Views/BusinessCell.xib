@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="522 2nd St, SoMa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALt-83-mnD">
-                        <rect key="frame" x="86" y="43" width="101" height="15"/>
+                        <rect key="frame" x="86" y="43" width="100.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -32,7 +32,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="20.5 mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2m0-cB-MSb">
-                        <rect key="frame" x="271" y="6" width="42" height="15"/>
+                        <rect key="frame" x="270.5" y="6" width="41.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -45,13 +45,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55 Reviews" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38m-0K-lrw">
-                        <rect key="frame" x="174" y="24" width="64" height="15"/>
+                        <rect key="frame" x="174" y="24" width="64" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtJ-ge-tf0">
-                        <rect key="frame" x="86" y="60" width="24" height="15"/>
+                        <rect key="frame" x="86" y="59.5" width="24" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -61,6 +61,7 @@
                     <constraint firstItem="TtJ-ge-tf0" firstAttribute="top" secondItem="ALt-83-mnD" secondAttribute="bottom" constant="2" id="8sf-Dt-ZOZ"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ATV-ce-isb" secondAttribute="bottom" constant="8" id="9hs-eH-WrB"/>
                     <constraint firstItem="ALt-83-mnD" firstAttribute="top" secondItem="DaT-Ax-U1m" secondAttribute="bottom" constant="2" id="BGA-ru-ZsH"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TtJ-ge-tf0" secondAttribute="trailing" constant="8" id="H0c-5G-suZ"/>
                     <constraint firstItem="ATV-ce-isb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="IXi-k6-uKL"/>
                     <constraint firstItem="38m-0K-lrw" firstAttribute="leading" secondItem="DaT-Ax-U1m" secondAttribute="trailing" constant="4" id="Rhg-Fz-B9V"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ALt-83-mnD" secondAttribute="trailing" constant="8" id="Xzv-X5-BN2"/>

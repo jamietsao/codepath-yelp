@@ -32,7 +32,10 @@ class Business {
         reviewCount = business["review_count"] as Int
         var location = business["location"] as Dictionary<String, AnyObject>
         address = location["address"] as Array<String>
-        neighborhoods = location["neighborhoods"] as Array<String>
+        neighborhoods = []
+        if let arr = location["neighborhoods"] as? Array<String> {
+            neighborhoods = arr
+        }
         city = location["city"] as String
         categories = []
         if let arr = business["categories"] as? Array<Array<String>> {

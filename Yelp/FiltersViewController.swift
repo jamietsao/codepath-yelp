@@ -9,21 +9,31 @@
 import UIKit
 
 protocol FiltersViewDelegate: class {
+    // perform search
     func filtersView(filtersVC: FiltersViewController, performSearch currentFilters: [Int : String])
+    // cancel and do nothing
+    func filtersView(filtersVC: FiltersViewController, cancel currentFilters: [Int : String])
 }
 
 class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchFilterDelegate {
 
-    let sections = [ Constants.FilterSections.Specials,
-                     Constants.FilterSections.Distance,
-                     Constants.FilterSections.Sort,
-                     Constants.FilterSections.Categories ]
-    
-    let labelFilters = [ [], Constants.Filters.distanceFilters, Constants.Filters.sortFilters, Constants.Filters.categoryFilters]
-    
-    var currentFilters = Dictionary<Int, String>()
+    // filter section names
+    let sections = [ Constants.FilterSections.Specials, Constants.FilterSections.Distance, Constants.FilterSections.Sort, Constants.FilterSections.Categories ]
 
+    // filter names/codes
+    let labelFilters = [ Constants.Filters.specialsFilters, Constants.Filters.distanceFilters, Constants.Filters.sortFilters, Constants.Filters.categoryFilters]
+
+    // stores the currently selected filters
+    // - used to search if 'Search' is clicked
+    // - thrown away if 'Cancel' is clicked
+    var currentFilters: Dictionary<Int, String>!
+    
+    // delegate to perform search off selected filters
     weak var delegate: FiltersViewDelegate?
+
+    //
+    // IBOutlets
+    //
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,8 +41,10 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
         // initialize nav bar
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Done, target: self, action: "onCancelButtonPress")
-        let searchButton = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Done, target: self, action: "onSearchButtonPress")
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Bordered, target: self, action: "onCancelButtonPress")
+        cancelButton.tintColor = UIColor.whiteColor()
+        let searchButton = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Bordered, target: self, action: "onSearchButtonPress")
+        searchButton.tintColor = UIColor.whiteColor()
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = searchButton
 
@@ -46,8 +58,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.registerNib(cellNib, forCellReuseIdentifier: "SwitchFilterCell")
         cellNib = UINib(nibName: "LabelFilterCell", bundle: NSBundle.mainBundle())
         tableView.registerNib(cellNib, forCellReuseIdentifier: "LabelFilterCell")
-        
-        NSLog("FiltersViewController - View Did Load")
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -72,18 +82,18 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        let section = indexPath.section
+        if section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("SwitchFilterCell", forIndexPath: indexPath) as SwitchFilterCell
             cell.switchFilterDelegate = self
-            cell.filterLabel.text = "Offering a Deal"
+            cell.filterLabel.text = self.labelFilters[section][0]["name"]
             if let currentValue = currentFilters[0] {
                 cell.filterSwitch.on = currentValue == "true" ? true : false
             }
-            
             return cell
         } else {
             // get selected filter
-            let selectedFilter = self.labelFilters[indexPath.section][indexPath.row]
+            let selectedFilter = self.labelFilters[section][indexPath.row]
             
             // dequeue cell
             let cell = tableView.dequeueReusableCellWithIdentifier("LabelFilterCell", forIndexPath: indexPath) as LabelFilterCell
@@ -92,7 +102,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.filterLabel.text = selectedFilter["name"]
 
             // set accessory type
-            if selectedFilter["code"] == currentFilters[indexPath.section] {
+            if selectedFilter["code"] == currentFilters[section] {
                 cell.accessoryType = .Checkmark
             } else {
                 cell.accessoryType = .None
@@ -125,15 +135,14 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         self.currentFilters[0] = switchValue ? "true" : "false"
     }
     
-//    func onCancelButtonPress() {
-//        // navigate back to filters view with no filter changes
-//        let businessesVC = self.storyboard?.instantiateViewControllerWithIdentifier("BusinessesViewController") as BusinessesViewController
-//        self.navigationController?.pushViewController(businessesVC, animated: true)
-//    }
+    func onCancelButtonPress() {
+        // navigate back to business view without performing search or saving filter changes
+        delegate?.filtersView(self, cancel: currentFilters)
+    }
     
     func onSearchButtonPress() {
-        // navigate back to filters view with current filter selections
+        // navigate back to business view with current filter selections
         delegate?.filtersView(self, performSearch: currentFilters)
     }
-
+    
 }

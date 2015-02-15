@@ -31,6 +31,7 @@ struct Constants {
     }
 
     struct Filters {
+        static let specialsFilters = [ [ "name" : "Offering a Deal" ] ]
         static let distanceFilters =
                                     [
                                         [ "name" : "1 mile", "code" : "1" ],
