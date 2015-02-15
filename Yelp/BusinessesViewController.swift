@@ -16,11 +16,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     let tokenSecret = "e6fO87qcUwpAcNMXMdJB1mt-Phk"
 
     var yelpClient: YelpClient!
+    
+    var searchTerm = ""
     var currentFilters = Dictionary<Int, String>()
 
     var businesses: [NSDictionary]!
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    lazy var searchBar = UISearchBar(frame: CGRectMake(0, 0, 200, 20))
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var networkErrorLabel: UILabel!
 
@@ -34,10 +36,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         // initialize table view
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
 
-        tableView.estimatedRowHeight = 84
-//        tableView.rowHeight = UITableViewAutomaticDimension
-
+        // register custom cells
+        var cellNib = UINib(nibName: "BusinessCell", bundle: NSBundle.mainBundle())
+        tableView.registerNib(cellNib, forCellReuseIdentifier: "BusinessCell")
 
         // initialize search bar
         searchBar.delegate = self
@@ -56,13 +60,13 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        // perform default search without search term
-        yelpSearch(searchTerm: "")
+        // perform default search
+        yelpSearch()
 
         NSLog("BusinessesViewController - View Did Appear")
     }
     
-    func yelpSearch(searchTerm term: String) {
+    func yelpSearch() {
         // show progress HUD before invoking API call
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 
@@ -81,7 +85,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         // perform search
-        yelpClient.search(term, dealsFilter: df, radiusFilterInMiles : rf, sortFilter : sf , categoryFilter: cf,
+        yelpClient.search(self.searchTerm, dealsFilter: df, radiusFilterInMiles : rf, sortFilter : sf , categoryFilter: cf,
             success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                 self.businesses = response["businesses"] as [NSDictionary]?
                 self.tableView.reloadData()
@@ -99,8 +103,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         // dismiss keyboard
         self.searchBar.endEditing(true)
+        // save search term
+        self.searchTerm = searchBar.text
         // perform search
-        yelpSearch(searchTerm: searchBar.text)
+        yelpSearch()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,7 +118,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BusinessTableViewCell", forIndexPath: indexPath) as BusinessTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as BusinessCell
         
         let business = self.businesses![indexPath.row]
 

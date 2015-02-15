@@ -1,14 +1,14 @@
 //
-//  BusinessTableViewCell.swift
+//  BusinessCell.swift
 //  Yelp
 //
-//  Created by Jamie Tsao on 2/10/15.
+//  Created by Jamie Tsao on 2/14/15.
 //  Copyright (c) 2015 Jamie Tsao. All rights reserved.
 //
 
 import UIKit
 
-class BusinessTableViewCell: UITableViewCell {
+class BusinessCell: UITableViewCell {
 
     @IBOutlet weak var businessImage: UIImageView!
     @IBOutlet weak var businessName: UILabel!
@@ -17,7 +17,7 @@ class BusinessTableViewCell: UITableViewCell {
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var categories: UILabel!
     @IBOutlet weak var distance: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,5 +28,5 @@ class BusinessTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
