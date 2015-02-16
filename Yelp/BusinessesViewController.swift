@@ -66,13 +66,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // perform default search
-//        yelpSearch()
-    }
-    
     func yelpSearch() {
         // show progress HUD before invoking API call
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -105,10 +98,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             },
             failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 NSLog("\(error)")
-//                let response = operation.response as NSHTTPURLResponse
-//                println(response.statusCode)
-//                println(response.description)
-//                println(response)
                 self.networkErrorLabel.hidden = false
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
             }
