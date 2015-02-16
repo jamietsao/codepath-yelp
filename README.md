@@ -5,7 +5,7 @@ This is a Yelp search app using the [Yelp API](http://developer.rottentomatoes.c
 Time spent: ~ 25 hours
 
 ### Known Issues
-- TODO
+- When Search Results page is first displayed, long business names are truncated instead of wrapping even though constraints appear correct.  This is apparently a known bug as mentioned by Tim in this video (https://vimeo.com/109911790), but his suggested fix didn't work for me and made the experience much worst so I decided to leave the bug as is.
 
 ### Features
 
