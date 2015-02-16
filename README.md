@@ -4,6 +4,9 @@ This is a Yelp search app using the [Yelp API](http://developer.rottentomatoes.c
 
 Time spent: ~ 25 hours
 
+### Known Issues
+- TODO
+
 ### Features
 
 #### Required
