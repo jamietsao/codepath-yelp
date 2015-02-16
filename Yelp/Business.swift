@@ -26,7 +26,9 @@ class Business {
     
     init(fromJSON business: NSDictionary) {
         id = business["id"] as String
-        businessImageUrl = business["image_url"] as String
+        if let str = business["image_url"] as? String {
+            businessImageUrl = str
+        }
         name = business["name"] as String
         ratingImageUrl = business["rating_img_url"] as String
         reviewCount = business["review_count"] as Int

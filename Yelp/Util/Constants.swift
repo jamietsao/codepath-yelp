@@ -24,10 +24,10 @@ struct Constants {
     }
 
     struct FilterSections {
-        static let Specials = "Specials"
-        static let Distance = "Distance"
-        static let Sort = "Sort by"
-        static let Categories = "Categories"
+        static let Specials = "SPECIALS"
+        static let Distance = "DISTANCE"
+        static let Sort = "SORT BY"
+        static let Categories = "CATEGORIES"
     }
 
     struct Filters {

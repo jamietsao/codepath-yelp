@@ -41,6 +41,9 @@ class BusinessCell: UITableViewCell {
     func setBusiness(business: Business, indexRow: Int) {
         self.business = business
         
+        // clear out previous values
+        self.businessImage.image = nil
+        
         // set IBOutlet values
         if let imageUrl = self.business.businessImageUrl {
             self.businessImage.setImageWithURL(NSURL(string: imageUrl))

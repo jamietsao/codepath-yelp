@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,23 +14,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmc-MR-KNq">
-                        <rect key="frame" x="8" y="11" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="20" y="11" width="36.5" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="centerY" secondItem="fmc-MR-KNq" secondAttribute="centerY" id="6QO-jL-WIA"/>
-                    <constraint firstAttribute="centerX" secondItem="fmc-MR-KNq" secondAttribute="centerX" id="8vy-yf-2Iv"/>
-                    <constraint firstItem="fmc-MR-KNq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="lhK-34-tBR"/>
-                    <constraint firstItem="fmc-MR-KNq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="mfN-Ke-3m6"/>
+                    <constraint firstItem="fmc-MR-KNq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Ctw-Wl-xVg"/>
+                    <constraint firstItem="fmc-MR-KNq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="XY9-vz-F5k"/>
+                    <constraint firstAttribute="bottom" secondItem="fmc-MR-KNq" secondAttribute="bottom" constant="11.5" id="uB8-Dt-wdf"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="8vy-yf-2Iv"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="filterLabel" destination="fmc-MR-KNq" id="qwH-qr-LeV"/>

@@ -10,18 +10,23 @@ import UIKit
 
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewDelegate {
 
+    // yelp api keys
     let consumerKey = "3c6T6Bh2L8fzjGF7OycIXA"
     let consumerSecret = "l97nu5YapgJGdXGk-5My2gNqVVA"
     let token = "lT8ULNVmeNbsr5zK1vlyX0EnQCLJwGsg"
     let tokenSecret = "e6fO87qcUwpAcNMXMdJB1mt-Phk"
 
+    // yelp client
     var yelpClient: YelpClient!
     
+    // current search term and filters
     var searchTerm = ""
-    var currentFilters = Dictionary<Int, String>()
+    var currentFilters = Dictionary<Int, AnyObject>()
 
+    // current list of yelp businesses returned from search
     var businesses: [Business]!
-    
+
+    // UI fields
     lazy var searchBar = UISearchBar(frame: CGRectMake(0, 0, 200, 20))
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var networkErrorLabel: UILabel!
@@ -54,6 +59,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
 
         // set defaults for filters
         currentFilters[0] = "false"
+        currentFilters[3] = NSMutableArray()
         
         // perform default search
         yelpSearch()
@@ -71,17 +77,17 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         // show progress HUD before invoking API call
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 
-        var df = "", rf = "", sf = "", cf = ""
-        if let a = currentFilters[0] {
+        var df = "", rf = "", sf = "", cf = []
+        if let a = currentFilters[0] as? String {
             df = a
         }
-        if let a = currentFilters[1] {
+        if let a = currentFilters[1] as? String {
             rf = a
         }
-        if let a = currentFilters[2] {
+        if let a = currentFilters[2] as? String {
             sf = a
         }
-        if let a = currentFilters[3] {
+        if let a = currentFilters[3] as? NSArray {
             cf = a
         }
         
@@ -144,7 +150,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.pushViewController(filtersViewController, animated: true)
     }
     
-    func filtersView(filtersVC: FiltersViewController, performSearch currentFilters: [Int : String]) {
+    func filtersView(filtersVC: FiltersViewController, performSearch currentFilters: [Int : AnyObject]) {
         NSLog("\(currentFilters)")
         // pop back to business view
         self.navigationController?.popViewControllerAnimated(true)
@@ -154,19 +160,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         self.yelpSearch()
     }
 
-    func filtersView(filtersVC: FiltersViewController, cancel currentFilters: [Int : String]) {
+    func filtersView(filtersVC: FiltersViewController, cancel currentFilters: [Int : AnyObject]) {
         // just pop back to business view without doing anything else
         self.navigationController?.popViewControllerAnimated(true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

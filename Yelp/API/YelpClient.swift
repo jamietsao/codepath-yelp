@@ -32,7 +32,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         self.requestSerializer.saveAccessToken(token)
     }
     
-    func search(term: String, dealsFilter: String, radiusFilterInMiles: String, sortFilter: String, categoryFilter: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> Void {
+    func search(term: String, dealsFilter: String, radiusFilterInMiles: String, sortFilter: String, categoryFilter: NSArray, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> Void {
 
         var parameters = [ "ll": "37.788022,-122.399797" ] // San Francisco
                     
@@ -48,9 +48,13 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         if !sortFilter.isEmpty {
             parameters["sort"] = sortFilter
         }
-        if !categoryFilter.isEmpty {
-            parameters["category_filter"] = categoryFilter
+        // TODO: fix this UGLY code
+        var str:String = ""
+        for (var i = 0; i < categoryFilter.count; i++) {
+            str += categoryFilter[i] as String + ","
         }
+        str = str.utf16Count > 0 ? str.substringToIndex(str.endIndex.predecessor()) : ""
+        parameters["category_filter"] = str
 
         NSLog("Yelp params: \(parameters)")
         
