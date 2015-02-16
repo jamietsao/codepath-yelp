@@ -5,7 +5,8 @@ This is a Yelp search app using the [Yelp API](http://developer.rottentomatoes.c
 Time spent: ~ 25 hours
 
 ### Known Issues
-- When Search Results page is first displayed, long business names are truncated instead of wrapping even though constraints appear correct.  This is apparently a known bug as mentioned by Tim in this video (https://vimeo.com/109911790), but his suggested fix didn't work for me and made the experience much worst so I decided to leave the bug as is.
+- When Search Results page is first displayed, long business names are truncated instead of wrapping even though constraints appear correct.  Once you scroll down and then back up, the wrapping correctly occurs for the same cell.  This is apparently a known bug as mentioned by Tim in this video (https://vimeo.com/109911790), but his suggested fix didn't work for me and made the experience much worst so I decided to leave the bug as is.  I posted on the FB group but a solution was never found.
+- My app is not currently handling bad combination of category filters.  It will generically show the "Network Error" message as I'm showing that for any API error.  
 
 ### Features
 
