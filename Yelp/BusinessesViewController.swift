@@ -30,7 +30,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     lazy var searchBar = UISearchBar(frame: CGRectMake(0, 0, 200, 20))
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var networkErrorLabel: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -163,6 +163,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     func filtersView(filtersVC: FiltersViewController, cancel currentFilters: [Int : AnyObject]) {
         // just pop back to business view without doing anything else
         self.navigationController?.popViewControllerAnimated(true)
+    }
+
+    @IBAction func onTop(sender: AnyObject) {
+        self.searchBar.endEditing(true)
     }
 
 }
