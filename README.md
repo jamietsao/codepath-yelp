@@ -30,7 +30,6 @@ Time spent: ~ 25 hours
 - [ ] Implement the restaurant detail page.
 - [ X ] Selected filters are remembered when you visit Filter page again after a search
 - [ X ] Implemented "Cancel" button on Filter page that takes you back to Search Results page without performing a new search.  Previously selected filters are still remembered if you go back to Filter page
-
 - [ X ] Implemented the ability to select multiple category filters (e.g. "Chinese" & "Comfort Food")
 - [ X ] Customized Nav Bar color to Yelp red, and text to white.  Status bar text to white as well
 
